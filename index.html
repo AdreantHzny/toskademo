@@ -70,7 +70,7 @@
 </head>
 <!-- 2. UPDATE TAG BODY (Sekitar baris 56) -->
 <!-- Tambahkan: dark:bg-gray-950 dark:text-gray-100 -->
-<body class="bg-cream dark:bg-gray-950 dark:text-gray-100 font-sans text-gray-800 antialiased selection:bg-toska-light selection:text-white">
+<body class=""bg-cream dark:bg-gray-950 dark:text-gray-100 font-sans text-gray-800 antialiased selection:bg-toska-light selection:text-white overflow-x-hidden">
 
     <!-- Navigation -->
     <!-- 3. UPDATE TAG NAV (Sekitar baris 59) -->
@@ -135,7 +135,8 @@
         <!-- Background Decor -->
         <div class="absolute inset-0 z-0">
             <!-- 7. UPDATE GRADIENT BACKGROUND HERO (Sekitar baris 104) -->
-            <div class="absolute inset-0 bg-gradient-to-r from-cream via-cream/95 to-transparent dark:from-gray-950 dark:via-gray-950/95 z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-cream via-cream/95 to-transparent dark:from-gray-950 dark:via-gray-950/95 z-10">
+            </div>
 
         <div class="p-8 rounded-2xl bg-cream dark:bg-gray-800 hover:shadow-xl transition-all duration-300 group cursor-default border border-toska/10">
         <div class="w-14 h-14 bg-white dark:bg-gray-700 rounded-xl flex items-center justify-center mb-6 text-toska group-hover:bg-toska group-hover:text-white transition-colors shadow-sm">
@@ -191,6 +192,14 @@
         </div>
     </section>
 
+    <button onclick="toggleTheme()" class="p-2 mr-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-yellow-400 transition-colors">
+    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+</button>
+
+<button class="md:hidden text-gray-600 focus:outline-none" onclick="toggleMobileMenu()">
+    <i data-lucide="menu" class="w-7 h-7"></i>
+</button>
     <section class="bg-gradient-to-r from-yellow-500 to-yellow-600 py-4 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
         
@@ -675,4 +684,5 @@
 </script>
 </body>
 </html>
+
 
