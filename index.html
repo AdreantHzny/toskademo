@@ -47,55 +47,73 @@
         ::-webkit-scrollbar-track { background: #F9F5EB; }
         ::-webkit-scrollbar-thumb { background: #D4B89C; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #8B5E3C; }
+        
+        /* Hide scrollbar for category tabs */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 
 <body class="bg-cream dark:bg-gray-950 dark:text-gray-100 font-sans text-gray-800 antialiased selection:bg-toska-light selection:text-white overflow-x-hidden">
 
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 dark:bg-gray-900/90 dark:border-b dark:border-gray-800 backdrop-blur-md shadow-sm" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="#" class="flex items-center gap-3 group">
-                    <div class="h-10 w-10 bg-toska rounded-lg flex items-center justify-center shadow-sm text-white font-bold text-xl group-hover:scale-105 transition-transform">
-                        TK
-                    </div>
-                    <div>
-                        <h1 class="font-serif font-bold text-xl tracking-wide text-toska-dark dark:text-white">TOSKA KAHVE</h1>
-                        <p class="text-[10px] uppercase tracking-[0.2em] text-coffee font-medium">Roastery</p>
-                    </div>
-                </a>
-
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-toska transition-colors">Beranda</a>
-                    <a href="#about" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-toska transition-colors">Tentang Kami</a>
-                    <a href="#menu" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-toska transition-colors">Menu</a>
-                    <a href="#location" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-toska transition-colors">Lokasi</a>
-                    <a href="#booking" class="bg-toska text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-toska-dark transition-all transform hover:scale-105 shadow-lg shadow-toska/20">
-                        Reservasi Meja
-                    </a>
+    <header class="fixed w-full z-50 top-0 left-0 shadow-md transition-all duration-300">
+        
+        <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 py-2 relative z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+                <div class="flex items-center gap-2 text-white justify-center sm:justify-start">
+                    <i data-lucide="crown" class="w-4 h-4 text-white animate-pulse"></i>
+                    <p class="text-xs font-bold leading-tight">Join Toska Member! <span class="font-normal opacity-90">Dapat harga spesial.</span></p>
                 </div>
-
-                <div class="flex items-center gap-2 md:hidden">
-                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-yellow-400 transition-colors">
-                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
-                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                    </button>
-                    
-                    <button class="text-gray-600 dark:text-gray-300 focus:outline-none p-1" onclick="toggleMobileMenu()">
-                        <i data-lucide="menu" class="w-7 h-7"></i>
-                    </button>
-                </div>
-                
-                <div class="hidden md:block ml-4">
-                     <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-yellow-400 transition-colors">
-                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
-                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                    </button>
-                </div>
+                <button onclick="joinMember()" class="px-4 py-1 bg-white text-yellow-600 font-bold rounded-full text-[10px] uppercase tracking-wider hover:bg-yellow-50 hover:scale-105 transition-transform shadow-sm flex items-center gap-1">
+                    Daftar <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                </button>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 absolute w-full left-0 shadow-xl">
+        <nav class="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 w-full h-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+                <div class="flex justify-between items-center h-full">
+                    <a href="#" class="flex items-center gap-3 group">
+                        <div class="h-10 w-10 bg-toska rounded-lg flex items-center justify-center shadow-sm text-white font-bold text-xl group-hover:scale-105 transition-transform">
+                            TK
+                        </div>
+                        <div>
+                            <h1 class="font-serif font-bold text-xl tracking-wide text-toska-dark dark:text-white">TOSKA KAHVE</h1>
+                            <p class="text-[10px] uppercase tracking-[0.2em] text-coffee font-medium">Roastery</p>
+                        </div>
+                    </a>
+
+                    <div class="hidden md:flex space-x-8 items-center">
+                        <a href="#home" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-toska transition-colors">Beranda</a>
+                        <a href="#about" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-toska transition-colors">Tentang Kami</a>
+                        <a href="#menu" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-toska transition-colors">Menu</a>
+                        <a href="#location" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-toska transition-colors">Lokasi</a>
+                        <a href="#booking" class="bg-toska text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-toska-dark transition-all transform hover:scale-105 shadow-lg shadow-toska/20">
+                            Reservasi Meja
+                        </a>
+                    </div>
+
+                    <div class="flex items-center gap-2 md:hidden">
+                        <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-yellow-400 transition-colors">
+                            <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                            <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                        </button>
+                        <button class="text-gray-600 dark:text-gray-300 focus:outline-none p-1" onclick="toggleMobileMenu()">
+                            <i data-lucide="menu" class="w-7 h-7"></i>
+                        </button>
+                    </div>
+
+                    <div class="hidden md:block ml-4">
+                         <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-yellow-400 transition-colors">
+                            <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                            <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 shadow-xl absolute w-full left-0">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#home" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-toska-soft hover:text-toska" onclick="toggleMobileMenu()">Beranda</a>
                 <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-toska-soft hover:text-toska" onclick="toggleMobileMenu()">Tentang Kami</a>
@@ -104,26 +122,9 @@
                 <a href="#booking" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-bold bg-toska text-white hover:bg-toska-dark" onclick="toggleMobileMenu()">Reservasi Sekarang</a>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <section class="bg-gradient-to-r from-yellow-500 to-yellow-600 py-3 relative z-40 mt-20 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-            <div class="flex items-center gap-3 text-white justify-center sm:justify-start">
-                <div class="p-1.5 bg-white/20 rounded-full animate-pulse">
-                    <i data-lucide="crown" class="w-5 h-5 text-white"></i>
-                </div>
-                <div>
-                    <h3 class="font-bold text-sm leading-tight">Join Toska Member!</h3>
-                    <p class="text-[10px] text-yellow-100 font-medium opacity-90">Dapatkan harga spesial & promo eksklusif.</p>
-                </div>
-            </div>
-            <button onclick="joinMember()" class="px-5 py-1.5 bg-white text-yellow-600 font-bold rounded-full text-xs hover:bg-yellow-50 transition-transform hover:scale-105 shadow-sm flex items-center gap-1">
-                Daftar Sekarang <i data-lucide="arrow-right" class="w-3 h-3"></i>
-            </button>
-        </div>
-    </section>
-
-    <section id="home" class="relative pt-12 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
+    <section id="home" class="relative pt-40 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-to-r from-cream via-cream/95 to-transparent dark:from-gray-950 dark:via-gray-950/95 z-10"></div>
             <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
@@ -211,10 +212,12 @@
                 <h2 class="font-serif text-3xl md:text-5xl font-bold mt-2">Daftar Menu Favorit</h2>
             </div>
 
-            <div class="flex justify-center gap-4 mb-12 flex-wrap">
-                <button onclick="filterMenu('coffee')" class="menu-tab active px-6 py-2 rounded-full border border-toska-light hover:bg-toska transition-all text-sm font-semibold bg-toska">Coffee</button>
-                <button onclick="filterMenu('non-coffee')" class="menu-tab px-6 py-2 rounded-full border border-toska-light hover:bg-toska transition-all text-sm font-semibold bg-transparent">Non-Coffee</button>
-                <button onclick="filterMenu('food')" class="menu-tab px-6 py-2 rounded-full border border-toska-light hover:bg-toska transition-all text-sm font-semibold bg-transparent">Makanan & Snack</button>
+            <div class="flex justify-start md:justify-center gap-3 mb-12 overflow-x-auto hide-scroll px-4 pb-2">
+                <button onclick="filterMenu('coffee')" class="menu-tab active whitespace-nowrap px-6 py-2 rounded-full border border-toska-light hover:bg-toska transition-all text-sm font-semibold bg-toska">Coffee</button>
+                <button onclick="filterMenu('manual')" class="menu-tab whitespace-nowrap px-6 py-2 rounded-full border border-toska-light hover:bg-toska transition-all text-sm font-semibold bg-transparent">Manual Brew</button>
+                <button onclick="filterMenu('non-coffee')" class="menu-tab whitespace-nowrap px-6 py-2 rounded-full border border-toska-light hover:bg-toska transition-all text-sm font-semibold bg-transparent">Non-Coffee</button>
+                <button onclick="filterMenu('tea')" class="menu-tab whitespace-nowrap px-6 py-2 rounded-full border border-toska-light hover:bg-toska transition-all text-sm font-semibold bg-transparent">Tea & Squash</button>
+                <button onclick="filterMenu('food')" class="menu-tab whitespace-nowrap px-6 py-2 rounded-full border border-toska-light hover:bg-toska transition-all text-sm font-semibold bg-transparent">Makanan & Snack</button>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-container">
@@ -300,7 +303,7 @@
                     <div>
                         <h2 class="font-serif text-3xl font-bold text-gray-900 mb-4">Kunjungi Kami</h2>
                         <div class="w-16 h-1 bg-toska rounded-full mb-6"></div>
-                        <p class="text-gray-600">Lokasi strategis di pusat kota Wates, dekat dengan Alun-alun. Tempat parkir luas tersedia.</p>
+                        <p class="text-gray-600">Lokasi strategis di pusat kota Wates, dekat dengan Alun-alun. Tempat parkir luas tersedia untuk motor dan mobil.</p>
                     </div>
 
                     <div class="space-y-4">
@@ -316,6 +319,13 @@
                             <div>
                                 <h4 class="font-bold text-gray-900">Jam Operasional</h4>
                                 <p class="text-gray-600">Setiap Hari: 08:00 - 24:00 WIB</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="bg-toska-soft p-3 rounded-full text-toska shrink-0"><i data-lucide="phone" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Kontak</h4>
+                                <p class="text-gray-600">+62 822-4353-9621</p>
                             </div>
                         </div>
                     </div>
@@ -359,29 +369,69 @@
     </a>
 
     <script>
-        // 1. Data Menu Lengkap
+        // 1. Data Menu Lengkap (SEMUA MENU DIKEMBALIKAN)
         const menuItems = [
-            // COFFEE
+            // --- COFFEE ---
             { category: 'coffee', name: 'Es Kopi Toska', desc: 'Signature es kopi susu gula aren Toska.', price: '19.000', image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80', tag: 'Signature' },
             { category: 'coffee', name: 'Es Kopi Kokap', desc: 'Es kopi susu dengan sirup aren asli Kulonprogo.', price: '19.000', image: 'https://images.unsplash.com/photo-1517701604599-bb29b5c7fa5b?auto=format&fit=crop&w=600&q=80', tag: 'Local Fav' },
+            { category: 'coffee', name: 'Es Kopi Gula Aren', desc: 'Es kopi susu klasik dengan gula aren asli.', price: '18.000', image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80', tag: '' },
             { category: 'coffee', name: 'Es Kopi Rum (Halal)', desc: 'Es kopi susu dengan rasa rum yang halal.', price: '22.000', image: 'https://images.unsplash.com/photo-1592318945874-e4908814538c?auto=format&fit=crop&w=600&q=80', tag: 'Halal' },
-            { category: 'coffee', name: 'Cappuccino', desc: 'Espresso dengan susu steamed dan foam tebal.', price: '18.000', image: 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80', tag: 'Classic' },
-            { category: 'coffee', name: 'V60 Manual Brew', desc: 'Seduh manual. Tanyakan beans tersedia.', price: '20.000', image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80', tag: 'Manual' },
-            
-            // NON-COFFEE
-            { category: 'non-coffee', name: 'Matcha Latte', desc: 'Teh hijau Jepang dengan susu segar.', price: '20.000', image: 'https://images.unsplash.com/photo-1515823664972-6d66e79bc288?auto=format&fit=crop&w=600&q=80', tag: 'Popular' },
-            { category: 'non-coffee', name: 'Red Velvet', desc: 'Minuman rasa kue red velvet yang creamy.', price: '20.000', image: 'https://images.unsplash.com/photo-1563539659-1e3d6435b800?auto=format&fit=crop&w=600&q=80', tag: '' },
-            { category: 'non-coffee', name: 'Choco Latte', desc: 'Minuman cokelat yang kental dan nikmat.', price: '20.000', image: 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=600&q=80', tag: '' },
-            { category: 'non-coffee', name: 'Lemon Squash', desc: 'Minuman bersoda dengan rasa lemon segar.', price: '15.000', image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80', tag: 'Fresh' },
+            { category: 'coffee', name: 'Es Kopi Tiramisu', desc: 'Perpaduan kopi susu dan rasa tiramisu.', price: '22.000', image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'coffee', name: 'Es Kopi Caramel', desc: 'Es kopi susu dengan rasa karamel yang manis.', price: '22.000', image: 'https://images.unsplash.com/photo-1599398054066-846f28917f38?auto=format&fit=crop&w=600&q=80', tag: 'Sweet' },
+            { category: 'coffee', name: 'Es Kopi Hazelnut', desc: 'Es kopi susu dengan aroma hazelnut.', price: '22.000', image: 'https://images.unsplash.com/photo-1611162458324-a4288d03d364?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'coffee', name: 'Es Kopi Vanila', desc: 'Es kopi susu dengan rasa vanila yang creamy.', price: '22.000', image: 'https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'coffee', name: 'Cappuccino (Hot/Ice)', desc: 'Espresso dengan susu steamed dan foam tebal.', price: '18.000', image: 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80', tag: 'Classic' },
+            { category: 'coffee', name: 'Cafe Latte (Hot/Ice)', desc: 'Espresso dengan susu steamed yang creamy.', price: '18.000', image: 'https://images.unsplash.com/photo-1561882468-487b6a77281a?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'coffee', name: 'Mochacino (Hot/Ice)', desc: 'Perpaduan espresso, susu, dan cokelat.', price: '20.000', image: 'https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'coffee', name: 'Americano (Hot/Ice)', desc: 'Espresso yang ditambahkan air panas/dingin.', price: '15.000', image: 'https://images.unsplash.com/photo-1551030173-122aabc4489c?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'coffee', name: 'Affogato', desc: 'Es krim vanila disiram espresso panas.', price: '18.000', image: 'https://images.unsplash.com/photo-1599460080642-568d313940f3?auto=format&fit=crop&w=600&q=80', tag: 'Dessert' },
 
-            // FOOD
+            // --- MANUAL BREW ---
+            { category: 'manual', name: 'V60 / Aeropress / Tubruk', desc: 'Seduh manual. Tanyakan beans tersedia. Harga mulai dari.', price: '20.000', image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80', tag: 'Manual Brew' },
+            { category: 'manual', name: 'Vietnam Drip', desc: 'Kopi susu ala Vietnam yang menetes perlahan.', price: '18.000', image: 'https://images.unsplash.com/photo-1561557060-089130680040?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'manual', name: 'Japanese Iced Coffee', desc: 'Kopi seduh manual disajikan dingin. Harga mulai dari.', price: '20.000', image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80', tag: '' },
+
+            // --- NON COFFEE ---
+            { category: 'non-coffee', name: 'Red Velvet Latte', desc: 'Minuman rasa kue red velvet yang creamy.', price: '20.000', image: 'https://images.unsplash.com/photo-1563539659-1e3d6435b800?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'non-coffee', name: 'Matcha Latte', desc: 'Teh hijau Jepang dengan susu segar.', price: '20.000', image: 'https://images.unsplash.com/photo-1515823664972-6d66e79bc288?auto=format&fit=crop&w=600&q=80', tag: 'Popular' },
+            { category: 'non-coffee', name: 'Choco Latte', desc: 'Minuman cokelat yang kental dan nikmat.', price: '20.000', image: 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'non-coffee', name: 'Taro Latte', desc: 'Minuman rasa talas ungu yang unik.', price: '20.000', image: 'https://images.unsplash.com/photo-1563539659-1e3d6435b800?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'non-coffee', name: 'Milky Strawberry', desc: 'Susu segar dengan rasa stroberi.', price: '18.000', image: 'https://images.unsplash.com/photo-1570878475410-09d660c33411?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'non-coffee', name: 'Milky Melon', desc: 'Susu segar dengan rasa melon.', price: '18.000', image: 'https://images.unsplash.com/photo-1601039641847-7857b994d704?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'non-coffee', name: 'Milky Orange', desc: 'Susu segar dengan rasa jeruk.', price: '18.000', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'non-coffee', name: 'Milky Lychee', desc: 'Susu segar dengan rasa leci.', price: '18.000', image: 'https://images.unsplash.com/photo-1627065609833-10c476086735?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'non-coffee', name: 'Milky Mango', desc: 'Susu segar dengan rasa mangga.', price: '18.000', image: 'https://images.unsplash.com/photo-1588125775896-49864196194b?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'non-coffee', name: 'Milky Banana', desc: 'Susu segar dengan rasa pisang.', price: '18.000', image: 'https://images.unsplash.com/photo-1592061162252-40c063b9354e?auto=format&fit=crop&w=600&q=80', tag: '' },
+
+            // --- TEA & SQUASH ---
+            { category: 'tea', name: 'Original Tea', desc: 'Teh original, panas atau dingin.', price: '6.000', image: 'https://images.unsplash.com/photo-1564048501056-400159146620?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'tea', name: 'Lemon Tea', desc: 'Teh dengan perasan lemon segar.', price: '10.000', image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80', tag: 'Segar' },
+            { category: 'tea', name: 'Lychee Tea', desc: 'Teh dengan rasa dan buah leci.', price: '15.000', image: 'https://images.unsplash.com/photo-1622548587841-6b7862440038?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'tea', name: 'Strawberry Tea', desc: 'Teh dengan rasa stroberi.', price: '13.000', image: 'https://images.unsplash.com/photo-1570878475410-09d660c33411?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'tea', name: 'Mango Tea', desc: 'Teh dengan rasa mangga.', price: '13.000', image: 'https://images.unsplash.com/photo-1588125775896-49864196194b?auto=format&fit=crop&w=600&q=80', tag: '' },
+            { category: 'tea', name: 'Lemon Squash', desc: 'Minuman bersoda dengan rasa lemon segar.', price: '15.000', image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80', tag: 'Soda' },
+            { category: 'tea', name: 'Lychee Squash', desc: 'Minuman bersoda dengan rasa leci segar.', price: '15.000', image: 'https://images.unsplash.com/photo-1622548587841-6b7862440038?auto=format&fit=crop&w=600&q=80', tag: 'Soda' },
+            { category: 'tea', name: 'Strawberry Squash', desc: 'Minuman bersoda dengan rasa stroberi segar.', price: '15.000', image: 'https://images.unsplash.com/photo-1570878475410-09d660c33411?auto=format&fit=crop&w=600&q=80', tag: 'Soda' },
+            { category: 'tea', name: 'Mango Squash', desc: 'Minuman bersoda dengan rasa mangga segar.', price: '15.000', image: 'https://images.unsplash.com/photo-1588125775896-49864196194b?auto=format&fit=crop&w=600&q=80', tag: 'Soda' },
+            { category: 'tea', name: 'Melon Squash', desc: 'Minuman bersoda dengan rasa melon segar.', price: '15.000', image: 'https://images.unsplash.com/photo-1601039641847-7857b994d704?auto=format&fit=crop&w=600&q=80', tag: 'Soda' },
+            { category: 'tea', name: 'Orange Squash', desc: 'Minuman bersoda dengan rasa jeruk segar.', price: '15.000', image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=600&q=80', tag: 'Soda' },
+
+            // --- FOOD & SNACK ---
             { category: 'food', name: 'Indomie Goreng Telur', desc: 'Indomie goreng favorit dengan telur.', price: '15.000', image: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=600&q=80', tag: 'Best Seller' },
-            { category: 'food', name: 'Rice Bowl Katsu', desc: 'Nasi dengan ayam katsu renyah.', price: '18.000', image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80', tag: 'Heavy' },
+            { category: 'food', name: 'Indomie Rebus Telur', desc: 'Indomie rebus hangat dengan telur.', price: '15.000', image: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=600&q=80', tag: 'Heavy Meal' },
+            { category: 'food', name: 'Rice Bowl Ayam Kecap', desc: 'Nasi dengan ayam bumbu kecap yang lezat.', price: '18.000', image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80', tag: 'Heavy Meal' },
+            { category: 'food', name: 'Rice Bowl Ayam Sambal Matah', desc: 'Nasi dengan ayam dan sambal matah segar.', price: '18.000', image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80', tag: 'Heavy Meal' },
+            { category: 'food', name: 'Rice Bowl Ayam Katsu', desc: 'Nasi dengan ayam katsu renyah.', price: '18.000', image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80', tag: 'Heavy Meal' },
             { category: 'food', name: 'French Fries', desc: 'Kentang goreng renyah.', price: '13.000', image: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=600&q=80', tag: 'Snack' },
-            { category: 'food', name: 'Donat Gula', desc: 'Donat klasik tabur gula halus.', price: '6.000', image: 'https://images.unsplash.com/photo-1551024601-564d6e67e211?auto=format&fit=crop&w=600&q=80', tag: 'Sweet' }
+            { category: 'food', name: 'Cireng', desc: 'Cireng goreng kenyal.', price: '12.000', image: 'https://images.unsplash.com/photo-1632808896877-e3c6b0670054?auto=format&fit=crop&w=600&q=80', tag: 'Snack' },
+            { category: 'food', name: 'Tahu Walik', desc: 'Tahu goreng isi adonan yang gurih.', price: '12.000', image: 'https://images.unsplash.com/photo-1648737966636-2f5947072432?auto=format&fit=crop&w=600&q=80', tag: 'Snack' },
+            { category: 'food', name: 'Singkong Goreng', desc: 'Singkong goreng empuk dan gurih.', price: '12.000', image: 'https://images.unsplash.com/photo-1514843319620-4f04282d98b3?auto=format&fit=crop&w=600&q=80', tag: 'Snack' },
+            { category: 'food', name: 'Pisang Goreng', desc: 'Pisang goreng manis dan renyah.', price: '13.000', image: 'https://images.unsplash.com/photo-1619431540566-46671941763c?auto=format&fit=crop&w=600&q=80', tag: 'Snack' },
+            { category: 'food', name: 'Donat Gula Halus', desc: 'Donat klasik dengan taburan gula halus.', price: '6.000', image: 'https://images.unsplash.com/photo-1551024601-564d6e67e211?auto=format&fit=crop&w=600&q=80', tag: 'Sweet' },
+            { category: 'food', name: 'Donat Topping', desc: 'Pilihan topping: Coklat, Tiramisu, Matcha, Cappucino.', price: '7.000', image: 'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=600&q=80', tag: 'Sweet' }
         ];
 
-        // 2. Render Menu Logic
+        // 2. Render Menu Logic (Fixed Dual Buttons & Quantity)
         function renderMenu(category) {
             const container = document.getElementById('menu-container');
             container.innerHTML = '';
@@ -406,7 +456,7 @@
                         
                         <div class="mt-auto pt-4 border-t border-white/10">
                             <div class="flex items-center justify-between mb-4 bg-white/5 rounded-lg p-2">
-                                <span class="text-xs text-gray-300 font-medium ml-1">Jumlah:</span>
+                                <span class="text-xs text-gray-300 font-medium ml-1">Jumlah Porsi:</span>
                                 <div class="flex items-center gap-3">
                                     <button onclick="updateQty(${index}, -1)" class="w-7 h-7 rounded-full bg-white/10 text-white hover:bg-toska flex items-center justify-center transition-colors">-</button>
                                     <span id="qty-${index}" class="text-white font-bold w-4 text-center">1</span>
@@ -431,12 +481,19 @@
             lucide.createIcons();
         }
 
-        // 3. Helper Functions
+        // 3. Logic Functions
         function updateQty(index, change) {
             const qtySpan = document.getElementById(`qty-${index}`);
-            let currentQty = parseInt(qtySpan.innerText) + change;
-            if (currentQty < 1) currentQty = 1;
-            qtySpan.innerText = currentQty;
+            // Karena kita filter, ID mungkin tidak urut 0,1,2 secara visual, tapi index array tetap unik
+            // Solusi aman: gunakan event target atau simpan state. Tapi untuk demo sederhana ini,
+            // pastikan render ulang tidak mereset qty jika tidak pindah tab.
+            
+            // NOTE: Dalam sistem sederhana ini, qty reset saat pindah tab. Ini wajar.
+            if(qtySpan) {
+                let currentQty = parseInt(qtySpan.innerText) + change;
+                if (currentQty < 1) currentQty = 1;
+                qtySpan.innerText = currentQty;
+            }
         }
 
         function filterMenu(category) {
@@ -450,7 +507,8 @@
         }
 
         function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+            const menu = document.getElementById('mobile-menu');
+            if(menu) menu.classList.toggle('hidden');
         }
 
         function toggleTheme() {
@@ -464,15 +522,16 @@
             }
         }
 
-        // 4. WhatsApp Logic
+        // 4. WhatsApp Integration
         function orderViaWA(item, index) {
-            const qty = document.getElementById(`qty-${index}`).innerText;
-            const text = `Halo Admin Toska! Saya mau pesan PICKUP: ${item} (${qty} porsi). Mohon disiapkan.`;
+            const qtySpan = document.getElementById(`qty-${index}`);
+            const qty = qtySpan ? qtySpan.innerText : '1';
+            const text = `Halo Admin Toska Kahve! 👋%0A%0ASaya mau pesan untuk *AMBIL SENDIRI (Pickup)*:%0A%0A☕ *Menu:* ${item}%0A🔢 *Jumlah:* ${qty} porsi%0A%0AMohon disiapkan ya, terima kasih!`;
             window.open(`https://wa.me/6282243539621?text=${text}`, '_blank');
         }
 
         function joinMember() {
-            const text = `Halo Admin Toska! Saya tertarik daftar MEMBER untuk dapat harga spesial. Info dong kak!`;
+            const text = `Halo Admin Toska! 👋%0A%0ASaya tertarik untuk daftar *MEMBER TOSKA* untuk dapat harga spesial.%0A%0AMohon infonya syarat & ketentuannya ya. Terima kasih!`;
             window.open(`https://wa.me/6282243539621?text=${text}`, '_blank');
         }
 
@@ -482,25 +541,19 @@
             const date = document.getElementById('date').value;
             const time = document.getElementById('time').value;
             const pax = document.getElementById('pax').value;
-            const text = `Halo Toska! Saya mau Reservasi Meja.%0A%0ANama: ${name}%0ATanggal: ${date}%0AJam: ${time}%0AJumlah: ${pax}`;
+            const notes = document.getElementById('notes').value;
+            const text = `Halo Toska Kahve, saya ingin reservasi meja:%0A%0A👤 Nama: ${name}%0A📅 Tanggal: ${date}%0A⏰ Jam: ${time}%0A👥 Jumlah: ${pax}%0A📝 Catatan: ${notes}`;
             window.open(`https://wa.me/6282243539621?text=${text}`, '_blank');
         }
 
         // 5. Initialize
-        renderMenu('coffee');
+        renderMenu('coffee'); // Default tab
         lucide.createIcons();
         
-        // Check Theme
+        // Check Theme Preference
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         }
-
-        // Navbar Scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) navbar.classList.add('shadow-md');
-            else navbar.classList.remove('shadow-md');
-        });
     </script>
 </body>
 </html>
