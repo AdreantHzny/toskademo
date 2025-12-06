@@ -191,6 +191,27 @@
         </div>
     </section>
 
+    <section class="bg-gradient-to-r from-yellow-500 to-yellow-600 py-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3 text-white">
+                <div class="p-2 bg-white/20 rounded-full animate-pulse">
+                    <i data-lucide="crown" class="w-6 h-6 text-white"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg leading-tight">Join Toska Member!</h3>
+                    <p class="text-xs text-yellow-100 font-medium">Dapatkan harga spesial & promo eksklusif.</p>
+                </div>
+            </div>
+            
+            <button onclick="joinMember()" class="w-full sm:w-auto px-6 py-2 bg-white text-yellow-600 font-bold rounded-full text-sm hover:bg-yellow-50 transition-transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+                Daftar Sekarang
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </section>
+
     <!-- Features / Concept -->
     <!-- 8. UPDATE BACKGROUND SECTION ABOUT (Sekitar baris 139) -->
     <section id="about" class="py-20 bg-white dark:bg-gray-900">
@@ -636,8 +657,22 @@
         window.open(`https://wa.me/6282243539621?text=${message}`, '_blank');
     }
 
+    // ... (kode fungsi sendToWhatsapp di atasnya) ...
+        window.open(`https://wa.me/6282243539621?text=${message}`, '_blank');
+    
+
+    // --- PASTE FUNGSI JOIN MEMBER DI SINI (Sekitar Baris 680) ---
+    function joinMember() {
+        const text = `Halo Admin Toska! 👋%0A%0ASaya tertarik untuk daftar *MEMBER TOSKA* untuk dapat harga spesial.%0A%0AMohon infonya syarat & ketentuannya ya. Terima kasih!`;
+        window.open(`https://wa.me/6282243539621?text=${text}`, '_blank');
+    }
+
+    // Initial Render
+    renderMenu('coffee');
+</script>
     // Initial Render
     renderMenu('coffee');
 </script>
 </body>
 </html>
+
