@@ -79,9 +79,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="#" class="flex items-center gap-3 group">
-                    <img src="https://ui-avatars.com/api/?name=Toska+Kahve&background=145D56&color=fff" 
-                         alt="Toska Kahve Logo" 
-                         class="h-10 w-10 rounded-lg object-contain shadow-sm">
+                <div class="h-10 w-10 bg-toska rounded-lg flex items-center justify-center shadow-sm text-white font-bold text-xl">
+                    TK
+                </div>
                     <div>
                         <h1 class="font-serif font-bold text-xl tracking-wide text-toska-dark dark:text-white">TOSKA KAHVE</h1>
                         <p class="text-[10px] uppercase tracking-[0.2em] text-coffee font-medium">Roastery</p>
@@ -129,7 +129,16 @@
         </div>
     </nav>
     </nav>
-
+    <section class="bg-yellow-500 py-3 relative z-40 mt-20"> <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+        <div class="flex items-center gap-2 text-white">
+            <i data-lucide="crown" class="w-5 h-5"></i>
+            <span class="text-sm font-bold">Join Member & Dapatkan Diskon!</span>
+        </div>
+            <button onclick="joinMember()" class="text-xs bg-white text-yellow-600 px-3 py-1 rounded-full font-bold shadow-sm">
+                Daftar
+            </button>
+        </div>
+    </section>
     <!-- Hero Section -->
     <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <!-- Background Decor -->
@@ -681,6 +690,7 @@
 </script>
 </body>
 </html>
+
 
 
 
